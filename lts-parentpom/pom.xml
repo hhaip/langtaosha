@@ -34,9 +34,9 @@
 			<groupId>commons-net</groupId>
 			<artifactId>commons-net</artifactId>
 		</dependency>
-	    <dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -59,6 +59,10 @@
 					<artifactId>spring</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>redis.clients</groupId>
@@ -233,10 +237,10 @@
 			<artifactId>commons-net</artifactId>
 			<version>3.2</version>
 		</dependency>
-	    <dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.4</version>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -307,6 +311,11 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>dubbo</artifactId>
 			<version>2.5.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>3.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>

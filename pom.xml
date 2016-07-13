@@ -13,5 +13,6 @@
     <module>lts-web</module>
     <module>lts-manager</module>
     <module>lts-common</module>
+    <module>lts-memcachedclient</module>
   </modules>
 </project>
