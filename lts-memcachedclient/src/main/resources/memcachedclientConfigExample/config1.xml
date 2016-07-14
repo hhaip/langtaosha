@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-autowire="byName" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 客户端生成FactoryBean，应用可以覆盖之，以获得定制的客户端 -->
+	<bean name="xmemFactoryBean"
+		class="cn.uparty.memcachedclient.XMemcachedFactoryBean"  init-method="init" destroy-method="destroy">
+		<property name="servers">
+			<value>${memcached_serverlist}</value>
+		</property>
+		<property name="timeout" value="5000"></property>
+		<property name="sessionLocator">
+			<bean class="net.rubyeye.xmemcached.impl.KetamaMemcachedSessionLocator"></bean>
+		</property>
+		<property name="transcoder">
+			<bean class="cn.uparty.memcachedclient.serializer.DefaultTranscoder"></bean>
+		</property>
+		<property name="bufferAllocator">
+			<bean class="net.rubyeye.xmemcached.buffer.SimpleBufferAllocator"></bean>
+		</property>
+	</bean>
+	<bean name="memcachedClient" factory-bean="xmemFactoryBean" factory-method="getClient" />
+</beans>
