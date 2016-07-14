@@ -12,4 +12,6 @@ public class CacheKeyConstants {
 	public static final String AUTH_ACCESS_TOKEN_KEY = "auth_access_token_key";
 	//jsapi ticket
 	public static final String UPARTY_JSAPI_TICKET_KEY = "uparty_jsapi_ticket_key";
+	//卡券ticket
+    public static final String UPARTY_CARD_TICKET_KEY = "uparty_card_ticket_key";
 }

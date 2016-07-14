@@ -19,14 +19,14 @@ import org.springframework.ui.Model;
 
 import com.alibaba.fastjson.JSONObject;
 
+import cn.lts.common.constant.CacheKeyConstants;
+import cn.lts.common.constant.WeiXinConstants;
+import cn.lts.common.util.SignUtil;
+import cn.lts.common.util.WechatAccessToken;
+import cn.lts.common.vo.AccessToken;
+import cn.lts.common.wx.WxConfig;
+import cn.lts.memcachedclient.MemcachedClient;
 import cn.lts.mobile.util.WechatTicket;
-import cn.uparty.memcachedclient.MemcachedClient;
-import cn.uparty.common.constant.CacheKeyConstants;
-import cn.uparty.common.constant.WeiXinConstants;
-import cn.uparty.common.vo.AccessToken;
-import cn.uparty.common.util.SignUtil;
-import cn.uparty.common.util.WechatAccessToken;
-import cn.uparty.server.third.wx.WxConfig;
 
 public abstract class BaseController {
 	private transient final Logger logger = LoggerFactory.getLogger(this.getClass());

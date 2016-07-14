@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alibaba.fastjson.JSONObject;
 
+import cn.lts.memcachedclient.MemcachedClient;
 import cn.lts.mobile.util.WechatTicket;
 import cn.lts.mobile.web.core.BaseController;
 import cn.lts.common.constant.WeiXinConstants;
 import cn.lts.common.vo.AccessToken;
 import cn.lts.common.wx.WxConfig;
-import cn.lts.memcachedclient.MemcachedClient;
 import cn.lts.common.util.SignUtil;
 
 /**

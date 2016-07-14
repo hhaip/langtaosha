@@ -14,5 +14,6 @@
     <module>lts-manager</module>
     <module>lts-common</module>
     <module>lts-memcachedclient</module>
+    <module>lts-hessian</module>
   </modules>
 </project>

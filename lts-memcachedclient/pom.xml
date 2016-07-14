@@ -13,9 +13,29 @@
   <artifactId>lts-memcachedclient</artifactId>
   <packaging>jar</packaging>
   
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>3.2.3.RELEASE</spring.version>
+  </properties>
+
   <dependencies>
-  
+	<dependency>
+		<groupId>com.googlecode.xmemcached</groupId>
+		<artifactId>xmemcached</artifactId>
+		<version>1.4.1</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.lts.hessian</groupId>
+  		<artifactId>lts-hessian</artifactId>
+  		<version>1.0.1-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>com.lts.common</groupId>
+  		<artifactId>lts-common</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
   </dependencies>
+  
   <build>
     <finalName>lts-memcachedclient</finalName>
   </build>
