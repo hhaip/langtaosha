@@ -164,7 +164,7 @@ public abstract class BaseController {
 		AccessToken accessToken;
 		String cacheKey;
 		if (tokenType == WeiXinConstants.TOKEN_PPUBLIC) {
-			cacheKey = CacheKeyConstants.UPARTY_ACCESS_TOKEN_KEY;
+			cacheKey = CacheKeyConstants.LTS_ACCESS_TOKEN_KEY;
 		} else if (tokenType == WeiXinConstants.TOKEN_AUTH) {
 			if(StringUtils.isBlank(code)){
 				logger.error("无法获取用户openId,code为空");
@@ -196,13 +196,13 @@ public abstract class BaseController {
 	 * @return
 	 */
 	protected String getTicket(MemcachedClient memcachedClient, String token) {
-		if (memcachedClient.get(CacheKeyConstants.UPARTY_JSAPI_TICKET_KEY) != null) {
-			return memcachedClient.get(CacheKeyConstants.UPARTY_JSAPI_TICKET_KEY);
+		if (memcachedClient.get(CacheKeyConstants.LTS_JSAPI_TICKET_KEY) != null) {
+			return memcachedClient.get(CacheKeyConstants.LTS_JSAPI_TICKET_KEY);
 		} else {
 			JSONObject jo = WechatTicket.getTicket(token);
 			String ticket = jo.getString("ticket");
 			if (StringUtils.isNotBlank(ticket)) {
-				memcachedClient.set(CacheKeyConstants.UPARTY_JSAPI_TICKET_KEY, CacheKeyConstants.ACCESS_TOKEN_EXPIRE_TIME, ticket);
+				memcachedClient.set(CacheKeyConstants.LTS_JSAPI_TICKET_KEY, CacheKeyConstants.ACCESS_TOKEN_EXPIRE_TIME, ticket);
 				return ticket;
 			} else {
 				return null;

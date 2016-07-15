@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="goodsManager" class="com.mtls.manager.GoodsManager">
+		<property name="goodsDao" ref="goodsDao"></property>
+	</bean>
+	
+	<bean id="userManager" class="com.mtls.manager.UserManager">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+		
+</beans>

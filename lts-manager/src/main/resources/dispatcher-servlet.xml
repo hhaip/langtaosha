@@ -1,0 +1,49 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd
+			http://www.springframework.org/schema/mvc
+			http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+		
+	<!-- 1、设置Spring自动扫描组件，这里给添加了@controller的controller自动注入bean -->
+	<context:component-scan base-package="com.mtls.web" />	
+		
+	<!-- 2、启用Spring的注解功能，同时给Controller分配映射请求 -->
+	<!-- (1)、新手采用 <mvc:annotation-driven/> -->	
+	<!-- (2)、自定义映射请求规则，如下： -->
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"> 
+		<property name="messageConverters">  
+	        <list>  
+	        	<!-- p:writeAcceptCharset="false"配置不要把用户请求里的所有收集到的消息都写到response里 -->
+	            <bean class="org.springframework.http.converter.StringHttpMessageConverter" p:writeAcceptCharset="false">  
+	                <property name="supportedMediaTypes">  
+	                    <list>  
+	                        <value>text/html;charset=UTF-8</value>  
+	                    </list>  
+	                </property>  
+	            </bean>  
+	        </list>  
+	    </property>  
+	</bean>
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler/>
+	<!-- 3、配置视图解析类 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/page/" />   <!-- 指定映射到当前文件夹下 -->
+		<property name="suffix" value=".jsp" /> 		 <!-- 视图必须以.jsp结尾，可为空，便于自己扩展 -->
+	</bean>
+	
+	<!-- 4、设置访问静态文件（.jpg, .css, .js等），防止静态文件被拦截出现404错误    两种方案如下（二选一）：-->
+	<!-- 方案一  使用默认的Servlet来响应静态文件 -->	
+	<!-- <mvc:default-servlet-handler /> -->
+	<!-- 方案二  匹配URL/images/**的URL被当做静态资源，由Spring读出到内存中再响应http -->  
+    <mvc:resources mapping="/images/**" location="/images/" cache-period="31556926"/>  
+    <mvc:resources mapping="/js/**" location="/js/" cache-period="31556926"/>  
+    <mvc:resources mapping="/css/**" location="/css/" cache-period="31556926"/>  
+	
+</beans>

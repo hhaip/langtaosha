@@ -14,7 +14,17 @@
   <packaging>war</packaging>
   
   <dependencies>
-    
+    <dependency>
+   		<groupId>com.lts.common</groupId>
+		<artifactId>lts-common</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+   	</dependency>
+   	
+   	<dependency>
+   		<groupId>com.lts.facade</groupId>
+  		<artifactId>lts-facade</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+   	</dependency>
   </dependencies>
   <build>
     <finalName>lts-manager</finalName>

@@ -7,7 +7,7 @@
   <packaging>pom</packaging>
   
   <url>langtaosha.com</url>
-  <description>碧桂园-十里银滩，浪淘沙酒店预定</description>
+  <description>碧桂园 - 十里银滩，浪淘沙酒店预定</description>
   
   <properties>
   	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

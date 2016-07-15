@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mtls.dao.UserDao">
+
+    <insert id="addNew" keyProperty="id" useGeneratedKeys="true" parameterType="User">
+	    insert into t_user(
+	        loginName,password,email,uname,address,postman,mobile)
+	    values (
+	        #{loginName},#{password},#{email},#{uname},#{address},#{postman},#{mobile}
+	    )
+	    <selectKey resultType="Long" keyProperty="id" order="AFTER">
+	        SELECT LAST_INSERT_ID()
+	    </selectKey>
+    </insert>
+    
+    <resultMap id="baseResult" type="User" >
+    	<result column="id" property="id"/>
+    	<result column="loginName" property="loginName"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+        <result column="uname" property="uname"/>
+        <result column="address" property="address"/>
+        <result column="postman" property="postman"/>
+        <result column="mobile" property="mobile"/>
+    </resultMap>
+    
+    <sql id="All_User_List">
+    	id,loginName,password,email,uname,address,postman,mobile
+    </sql>
+
+	<resultMap id="userResultMap" type="User">
+        <result column="id" property="id"/>
+    	<result column="loginName" property="loginName"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+        <result column="uname" property="uname"/>
+        <result column="address" property="address"/>
+        <result column="postman" property="postman"/>
+        <result column="mobile" property="mobile"/>
+    </resultMap>
+    
+</mapper>

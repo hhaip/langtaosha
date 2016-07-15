@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+    <pattern>%-16(%d{MM-dd HH:mm:ss.SSS}) %-5thread %-5level %logger{1} - %msg%n</pattern>
+  </encoder>
+  </appender>
+
+  <appender name="wxAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <FileNamePattern>${catalina.home}/logs/upartyMobileLog-%d{yyyy-MM-dd}.log</FileNamePattern>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="com.google" level="INFO"/>
+  <logger name="net.rubyeye.xmemcached" level="INFO" />
+  <logger name="org.mybatis" level="INFO"/>
+  <logger name="org.springframework" level="INFO"/>
+  <logger name="com.alibaba" level="INFO"/>
+  <logger name="org.apache" level="INFO"/>
+
+  <logger name="com.mtls.dao" level="INFO">
+    <appender-ref ref="wxAppender"/>
+  </logger>
+  
+  <logger name="com.mtls.service" level="DEBUG">
+    <appender-ref ref="wxAppender"/>
+  </logger>
+  
+  <logger name="com.mtls.web" level="DEBUG">
+    <appender-ref ref="wxAppender"/>
+  </logger>
+
+  <logger name="wxLog" level="DEBUG">
+    <appender-ref ref="wxAppender"/>
+  </logger>
+  
+  <root>
+    <level value="DEBUG"/>
+    <appender-ref ref="STDOUT"/>
+  </root>
+</configuration>
